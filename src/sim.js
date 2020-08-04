@@ -1,4 +1,4 @@
-import sim from './temp';
+import sim from 'uc-econ-sim';
 
 const startingConditions = {
   random: {
