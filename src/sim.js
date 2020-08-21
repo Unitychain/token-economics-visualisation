@@ -2,7 +2,7 @@ import sim from './test';
 
 const startingConditions = {
   random: {
-    chartPerformanceInterval: 240,
+    chartResolution: 240,
     simulationEpochs: 87660,
     marketCap: 210000000,
     tokenSupply: 2100000,
@@ -19,7 +19,7 @@ const startingConditions = {
     minimumBurnMintRate: 0.1,
   },
   sine: {
-    chartPerformanceInterval: 1,
+    chartResolution: 1,
     simulationEpochs: 87660,
     marketCap: 100000000,
     tokenSupply: 1000000,
@@ -36,7 +36,7 @@ const startingConditions = {
     minimumBurnMintRate: 0.1,
   },
   bitcoin: {
-    chartPerformanceInterval: 240,
+    chartResolution: 240,
     simulationEpochs: 87660,
     marketCap: 210000000,
     tokenSupply: 21000,
@@ -90,11 +90,11 @@ const simulationFunctions = {
     for (
       let i = 0;
       i < Math.floor(
-        initialConditions.simulationEpochs.value / initialConditions.chartPerformanceInterval.value,
+        initialConditions.simulationEpochs.value / initialConditions.chartResolution.value,
       );
       i += 1
     ) {
-      for (let p = 0; p < initialConditions.chartPerformanceInterval.value; p += 1) {
+      for (let p = 0; p < initialConditions.chartResolution.value; p += 1) {
         current = sim.step(current, {
           marketCap: Math.max(
             10,
@@ -148,11 +148,11 @@ const simulationFunctions = {
     for (
       let i = 0;
       i < Math.floor(
-        initialConditions.simulationEpochs.value / initialConditions.chartPerformanceInterval.value,
+        initialConditions.simulationEpochs.value / initialConditions.chartResolution.value,
       );
       i += 1
     ) {
-      for (let p = 0; p < initialConditions.chartPerformanceInterval.value; p += 1) {
+      for (let p = 0; p < initialConditions.chartResolution.value; p += 1) {
         current = sim.step(current, {
           marketCap: (current.targetPrice * 100000)
             * Math.sin(current.epoch / 100) + current.targetPrice * 1000000,

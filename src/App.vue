@@ -63,7 +63,7 @@ export default {
       tabsel: 'none',
       charts: {},
       initialConditions: {
-        chartPerformanceInterval: {
+        chartResolution: {
           displayFor: [
             'random',
             'sine',
