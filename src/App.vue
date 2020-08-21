@@ -5,9 +5,12 @@
         <li :class="{ 'is-active': tabsel == 'random' }" @click="changeTab('random')">
           <a>Random</a>
         </li>
-        <li :class="{ 'is-active': tabsel == 'bitcoin' }" @click="changeTab('bitcoin')">
-          <a>Bitcoin</a>
+        <li :class="{ 'is-active': tabsel == 'sine' }" @click="changeTab('sine')">
+          <a>Sine</a>
         </li>
+        <!--<li :class="{ 'is-active': tabsel == 'bitcoin' }" @click="changeTab('bitcoin')">
+          <a>Bitcoin</a>
+        </li>-->
       </ul>
     </div>
     <div class="content">
@@ -52,6 +55,10 @@ import sim from '@/sim';
 export default {
   name: 'App',
   data() {
+    setTimeout(() => {
+      this.changeTab('random');
+    }, 1000);
+
     return {
       tabsel: 'none',
       charts: {},
@@ -59,7 +66,15 @@ export default {
         chartPerformanceInterval: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
+          ],
+          value: 0,
+        },
+        simulationEpochs: {
+          displayFor: [
+            'random',
+            'sine',
           ],
           value: 0,
         },
@@ -72,12 +87,14 @@ export default {
         tokenSupply: {
           displayFor: [
             'random',
+            'sine',
           ],
           value: 0,
         },
         transactions: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -85,6 +102,7 @@ export default {
         targetPrice: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -92,6 +110,7 @@ export default {
         numberOfNodes: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -99,6 +118,7 @@ export default {
         users: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -106,6 +126,7 @@ export default {
         entitlementMintPerUser: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -113,6 +134,7 @@ export default {
         churnRate: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -120,6 +142,7 @@ export default {
         minimumNodes: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -127,27 +150,15 @@ export default {
         targetProfitabilityPerNode: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
         },
-        emaStickiness: {
+        maxMintPerTransaction: {
           displayFor: [
             'random',
-            'bitcoin',
-          ],
-          value: 0,
-        },
-        priceAdjustAggressiveness: {
-          displayFor: [
-            'random',
-            'bitcoin',
-          ],
-          value: 0,
-        },
-        maxSupplyAdjustPercent: {
-          displayFor: [
-            'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -155,6 +166,7 @@ export default {
         maxTXCost: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
@@ -162,6 +174,7 @@ export default {
         minimumBurnMintRate: {
           displayFor: [
             'random',
+            'sine',
             'bitcoin',
           ],
           value: 0,
