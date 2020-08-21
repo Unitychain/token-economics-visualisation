@@ -17,6 +17,9 @@
         <li :class="{ 'is-active': tabsel == 'bitcoin100' }" @click="changeTab('bitcoin100')">
           <a>Bitcoin x100 tps</a>
         </li>
+        <li :class="{ 'is-active': tabsel == 'bitcoin1000' }" @click="changeTab('bitcoin1000')">
+          <a>Bitcoin x1000 tps</a>
+        </li>
       </ul>
     </div>
     <div class="content">
@@ -76,6 +79,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -113,6 +117,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -123,6 +128,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -133,6 +139,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -143,6 +150,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -153,6 +161,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -163,6 +172,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -173,6 +183,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -183,6 +194,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -193,6 +205,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },
@@ -203,6 +216,7 @@ export default {
             'bitcoin',
             'bitcoin10',
             'bitcoin100',
+            'bitcoin1000',
           ],
           value: 0,
         },

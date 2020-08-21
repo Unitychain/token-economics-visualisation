@@ -87,6 +87,23 @@ const startingConditions = {
     maxTXCost: 100,
     minimumBurnMintRate: 0.1,
   },
+  bitcoin1000: {
+    chartResolution: 10,
+    simulationEpochs: 36696,
+    marketCap: 9174844153,
+    tokenSupply: 91748441,
+    transactions: 7995000,
+    targetPrice: 100,
+    numberOfNodes: 3500000,
+    users: 100,
+    entitlementMintPerUser: 1,
+    churnRate: 20,
+    minimumNodes: 1000,
+    targetProfitabilityPerNode: 1000,
+    maxMintPerTransaction: 1000,
+    maxTXCost: 100,
+    minimumBurnMintRate: 0.1,
+  },
 };
 
 const simulationFunctions = {
@@ -373,6 +390,65 @@ const simulationFunctions = {
         current = sim.step(current, {
           marketCap: currentBitcoinData.marketCap,
           transactions: currentBitcoinData.transactions * 100,
+        });
+      }
+
+      // eslint-disable-next-line no-loop-func
+      charts.forEach((chart) => {
+        simulation[chart][new Date(startDate + current.epoch * 3600000)] = current[chart];
+      });
+    }
+
+    return simulation;
+  },
+  bitcoin1000(initialConditions) {
+    const startDate = new Date('2016-06-11').getTime();
+
+    const inputs = {};
+
+    Object.keys(initialConditions).forEach((input) => {
+      inputs[input] = initialConditions[input].value;
+    });
+
+    let current = sim.seed(inputs);
+
+    const charts = [
+      'marketCap',
+      'tokenPrice',
+      'tokenSupply',
+      'mintPerTransaction',
+      'burnPerTransaction',
+      'profitabilityPerNode',
+      'numberOfNodes',
+      'joinRate',
+      'transactions',
+    ];
+
+    const simulation = [];
+
+    charts.forEach((chart) => {
+      simulation[chart] = {};
+      simulation[chart][new Date(startDate)] = current[chart];
+    });
+
+    for (
+      let i = 0;
+      i < Math.floor(
+        initialConditions.simulationEpochs.value / initialConditions.chartResolution.value,
+      );
+      i += 1
+    ) {
+      for (let p = 0; p < initialConditions.chartResolution.value; p += 1) {
+        const currentBitcoinData = bitcoinSimData[
+          new Date(startDate + current.epoch * 3600000).toISOString().slice(0, 10)
+        ] || {
+          marketCap: current.marketCap,
+          transactions: current.transactions / 1000,
+        };
+
+        current = sim.step(current, {
+          marketCap: currentBitcoinData.marketCap,
+          transactions: currentBitcoinData.transactions * 1000,
         });
       }
 
