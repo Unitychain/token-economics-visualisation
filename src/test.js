@@ -5,11 +5,9 @@
   - transactions
   - numberOfNodes
   - tokenSupply
-  - users
   - targetPrice
   - churnRate
   - targetProfitabilityPerNode
-  - entitlementMintPerUser
   - maxMintPerTransaction
   - minimumNodes
   - maxTXCost
@@ -45,8 +43,6 @@ function seed(next) {
     ),
   );
 
-  next.entitlementMint = next.users * next.entitlementMintPerUser;
-
   return next;
 }
 
@@ -54,11 +50,9 @@ function seed(next) {
   Adjustments Params:
   - marketCap
   - transactions
-  - users
   - targetPrice
   - churnRate
   - targetProfitabilityPerNode
-  - entitlementMintPerUser
   - maxMintPerTransaction
   - minimumNodes
   - maxTXCost
@@ -70,7 +64,6 @@ function step(previous, adjustments) {
     Apply adjustments to parameters, this can be called in cases such as:
     - Target price adjustments to track CPI
     - Churn rate adjustment in case of possible network attacks
-    - New users are entered into the system
   */
   const next = Object.assign(previous, adjustments);
 
@@ -99,8 +92,6 @@ function step(previous, adjustments) {
     Calculate token supply:
     - previous.burnPerTransaction * previous.transactions : remove burnt tokens for transaction fees
     + previous.mintPerTransaction * previous.transactions : add minted tokens for transactions processed
-    + previous.entitlementMint : add minted tokens for user entitlements
-    NOTE: Entitlement system is going to be reworked
     Math.max 1 : 1 token minimum supply to prevent dividing by 0 in other calculations
   */
   next.tokenSupply = Math.min(
@@ -109,8 +100,7 @@ function step(previous, adjustments) {
       previous.tokenSupply - (previous.tokenSupply / 50),
       previous.tokenSupply
       - previous.burnPerTransaction * previous.transactions
-      + previous.mintPerTransaction * previous.transactions
-      + previous.entitlementMint,
+      + previous.mintPerTransaction * previous.transactions,
     ),
     previous.tokenSupply + (previous.tokenSupply / 50),
   );
@@ -171,12 +161,6 @@ function step(previous, adjustments) {
     ),
   );
 
-  /*
-    NOTE: Entitlement system is going to be reworked
-    Calculate the tokens to be minted for entitlements to users
-  */
-  next.entitlementMint = next.users * next.entitlementMintPerUser;
-
   return next;
 }
 
@@ -186,7 +170,6 @@ function step(previous, adjustments) {
   - targetPrice
   - churnRate
   - targetProfitabilityPerNode
-  - entitlementMintPerUser
   - maxMintPerTransaction
   - minimumNodes
   - maxTXCost
@@ -202,8 +185,6 @@ function step(previous, adjustments) {
   - joinRate
   - mintPerTransaction
   - burnPerTransaction
-  - entitlementMint
-  - users
 */
 
 module.exports = {

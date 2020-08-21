@@ -132,28 +132,6 @@ export default {
           ],
           value: 0,
         },
-        users: {
-          displayFor: [
-            'random',
-            'sine',
-            'bitcoin',
-            'bitcoin10',
-            'bitcoin100',
-            'bitcoin1000',
-          ],
-          value: 0,
-        },
-        entitlementMintPerUser: {
-          displayFor: [
-            'random',
-            'sine',
-            'bitcoin',
-            'bitcoin10',
-            'bitcoin100',
-            'bitcoin1000',
-          ],
-          value: 0,
-        },
         churnRate: {
           displayFor: [
             'random',
