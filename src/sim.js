@@ -142,13 +142,6 @@ const simulationFunctions = {
             * (current.marketCap / 100))
             - (current.marketCap / 200),
           ),
-          transactions: Math.max(
-            10,
-            current.transactions
-              + Math.floor(Math.random()
-              * (current.transactions / 1000)
-              - (current.transactions / 2000)),
-          ),
         });
       }
 
