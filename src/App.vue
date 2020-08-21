@@ -8,9 +8,15 @@
         <li :class="{ 'is-active': tabsel == 'sine' }" @click="changeTab('sine')">
           <a>Sine</a>
         </li>
-        <!--<li :class="{ 'is-active': tabsel == 'bitcoin' }" @click="changeTab('bitcoin')">
+        <li :class="{ 'is-active': tabsel == 'bitcoin' }" @click="changeTab('bitcoin')">
           <a>Bitcoin</a>
-        </li>-->
+        </li>
+        <li :class="{ 'is-active': tabsel == 'bitcoin10' }" @click="changeTab('bitcoin10')">
+          <a>Bitcoin x10 tps</a>
+        </li>
+        <li :class="{ 'is-active': tabsel == 'bitcoin100' }" @click="changeTab('bitcoin100')">
+          <a>Bitcoin x100 tps</a>
+        </li>
       </ul>
     </div>
     <div class="content">
@@ -56,7 +62,7 @@ export default {
   name: 'App',
   data() {
     setTimeout(() => {
-      this.changeTab('random');
+      this.changeTab('bitcoin');
     }, 1000);
 
     return {
@@ -68,6 +74,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -95,7 +103,6 @@ export default {
           displayFor: [
             'random',
             'sine',
-            'bitcoin',
           ],
           value: 0,
         },
@@ -104,6 +111,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -112,6 +121,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -120,6 +131,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -128,6 +141,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -136,6 +151,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -144,6 +161,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -152,6 +171,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -160,6 +181,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -168,6 +191,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },
@@ -176,6 +201,8 @@ export default {
             'random',
             'sine',
             'bitcoin',
+            'bitcoin10',
+            'bitcoin100',
           ],
           value: 0,
         },

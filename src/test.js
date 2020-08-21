@@ -103,12 +103,16 @@ function step(previous, adjustments) {
     NOTE: Entitlement system is going to be reworked
     Math.max 1 : 1 token minimum supply to prevent dividing by 0 in other calculations
   */
-  next.tokenSupply = Math.max(
-    1,
-    previous.tokenSupply
-    - previous.burnPerTransaction * previous.transactions
-    + previous.mintPerTransaction * previous.transactions
-    + previous.entitlementMint,
+  next.tokenSupply = Math.min(
+    Math.max(
+      1,
+      previous.tokenSupply - (previous.tokenSupply / 50),
+      previous.tokenSupply
+      - previous.burnPerTransaction * previous.transactions
+      + previous.mintPerTransaction * previous.transactions
+      + previous.entitlementMint,
+    ),
+    previous.tokenSupply + (previous.tokenSupply / 50),
   );
 
   /*
